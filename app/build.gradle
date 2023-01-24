@@ -15,6 +15,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def properties = new Properties()
+        def file = project.rootProject.file("local.properties")
+        properties.load(file.newDataInputStream())
+        def mapsApiKey = properties.getProperty('maps.api.key')
+        resValue "string", "MAPS_API_KEY", mapsApiKey
     }
 
     buildTypes {
