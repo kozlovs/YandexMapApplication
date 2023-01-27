@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_places">
+
+    <fragment
+        android:id="@+id/navigation_places"
+        android:name="ru.kozlovss.yandexmapapplication.ui.places.PlacesFragment"
+        android:label="@string/places"
+        tools:layout="@layout/fragment_places" />
+    <fragment
+        android:id="@+id/navigation_maps"
+        android:name="ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment"
+        android:label="@string/maps"
+        tools:layout="@layout/fragment_maps" />
+
+</navigation>
