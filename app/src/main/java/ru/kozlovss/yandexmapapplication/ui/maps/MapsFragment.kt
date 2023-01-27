@@ -17,7 +17,6 @@ class MapsFragment : Fragment() {
     private lateinit var mapView: MapView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        MapKitFactory.setApiKey(getString(R.string.MAPS_API_KEY))
         MapKitFactory.initialize(context)
         super.onCreate(savedInstanceState)
     }

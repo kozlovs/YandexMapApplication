@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.yandex.mapkit.MapKitFactory
 import ru.kozlovss.yandexmapapplication.R
 import ru.kozlovss.yandexmapapplication.databinding.ActivityMainBinding
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MapKitFactory.setApiKey(getString(R.string.MAPS_API_KEY))
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
