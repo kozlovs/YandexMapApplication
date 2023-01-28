@@ -7,7 +7,7 @@
     tools:context=".ui.places.PlacesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_item"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_height="match_parent"
