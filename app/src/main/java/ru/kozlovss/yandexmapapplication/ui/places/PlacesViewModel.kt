@@ -7,17 +7,16 @@ import ru.kozlovss.yandexmapapplication.dto.Place
 import ru.kozlovss.yandexmapapplication.repository.PlaceRepository
 import ru.kozlovss.yandexmapapplication.repository.PlaceRepositoryRoomImpl
 
-private val empty = Place(0L, "", -1F, -1F)
-
-class PlacesViewModel(application: Application): AndroidViewModel(application) {
-
+class PlacesViewModel(context: Application): AndroidViewModel(context) {
 
     private val repository: PlaceRepository = PlaceRepositoryRoomImpl(
-        AppDb.getInstance(application).placeDao()
+        AppDb.getInstance(context).placeDao()
     )
 
-    fun edit(place: Place) {
-        repository.save(place)
+    val places = repository.getAll()
+
+    fun insert(place: Place) {
+        repository.insert(place)
     }
 
     fun removeById(id: Long) {

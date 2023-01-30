@@ -1,4 +1,4 @@
-package ru.kozlovss.yandexmapapplication.ui.adapter
+package ru.kozlovss.yandexmapapplication.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

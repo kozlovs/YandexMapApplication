@@ -1,4 +1,4 @@
-package ru.kozlovss.yandexmapapplication.ui.adapter
+package ru.kozlovss.yandexmapapplication.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import ru.kozlovss.yandexmapapplication.databinding.CardPlaceBinding

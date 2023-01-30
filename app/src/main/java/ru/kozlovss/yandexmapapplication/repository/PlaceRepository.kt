@@ -1,10 +1,10 @@
 package ru.kozlovss.yandexmapapplication.repository
 
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 import ru.kozlovss.yandexmapapplication.dto.Place
 
 interface PlaceRepository {
-    fun getAll(): LiveData<List<Place>>
+    fun getAll(): Flow<List<Place>>
     fun removeById(id: Long)
-    fun save(place: Place)
+    fun insert(place: Place)
 }

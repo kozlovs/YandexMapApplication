@@ -6,6 +6,4 @@ interface OnInteractionListener {
     fun onRemove(place: Place)
 
     fun onToPlace(place: Place)
-
-    fun onEdit(place: Place)
 }

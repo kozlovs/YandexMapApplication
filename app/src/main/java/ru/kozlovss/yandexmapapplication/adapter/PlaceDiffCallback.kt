@@ -1,4 +1,4 @@
-package ru.kozlovss.yandexmapapplication.ui.adapter
+package ru.kozlovss.yandexmapapplication.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import ru.kozlovss.yandexmapapplication.dto.Place

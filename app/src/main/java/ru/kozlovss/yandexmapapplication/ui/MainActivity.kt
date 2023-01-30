@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MapKitFactory.setApiKey(getString(R.string.MAPS_API_KEY))
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

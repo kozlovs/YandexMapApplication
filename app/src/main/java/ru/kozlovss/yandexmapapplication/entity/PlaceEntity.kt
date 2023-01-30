@@ -14,10 +14,10 @@ data class PlaceEntity(
     val longitude: Float
 ) {
     companion object {
-        fun fromDto(place: Place) = PlaceEntity(
-            place.id, place.name, place.latitude, place.longitude
-        )
+        fun fromDto(place: Place) = with(place) {
+            PlaceEntity(id, name, latitude, longitude)
+        }
     }
 
-    fun toDto() = Place(this.id, this.name, this.latitude, this.longitude)
+    fun toDto() = Place(id, name, latitude, longitude)
 }
