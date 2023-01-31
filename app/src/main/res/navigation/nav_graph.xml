@@ -9,7 +9,11 @@
         android:id="@+id/navigation_places"
         android:name="ru.kozlovss.yandexmapapplication.ui.places.PlacesFragment"
         android:label="@string/places"
-        tools:layout="@layout/fragment_places" />
+        tools:layout="@layout/fragment_places" >
+        <action
+            android:id="@+id/action_navigation_places_to_navigation_maps"
+            app:destination="@id/navigation_maps" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_maps"
         android:name="ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment"

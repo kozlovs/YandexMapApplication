@@ -22,7 +22,6 @@ import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
 import com.yandex.runtime.ui_view.ViewProvider
 import android.Manifest
-import android.util.Log
 import kotlinx.coroutines.flow.collectLatest
 import ru.kozlovss.yandexmapapplication.R
 import ru.kozlovss.yandexmapapplication.databinding.FragmentMapsBinding
@@ -125,7 +124,6 @@ class MapsFragment : Fragment() {
                 viewModel.places.collectLatest { places ->
                     collection.clear()
                     places.forEach { place ->
-                        Log.d("MyLog", place.toString())
                         val placeBinding = MarkerPlaceBinding.inflate(layoutInflater)
                         placeBinding.title.text = place.name
                         collection.addPlacemark(
@@ -199,15 +197,6 @@ class MapsFragment : Fragment() {
         super.onStart()
         MapKitFactory.getInstance().onStart()
         mapView?.onStart()
-        mapView?.apply {
-            map.move(
-                CameraPosition(
-                    Point(55.751574, 37.573856), 11.0f, 0.0f, 0.0f
-                ),
-                Animation(Animation.Type.SMOOTH, 0F),
-                null
-            )
-        }
     }
 
     override fun onStop() {

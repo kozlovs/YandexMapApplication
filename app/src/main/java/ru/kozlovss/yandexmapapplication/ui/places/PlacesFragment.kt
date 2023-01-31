@@ -5,12 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import ru.kozlovss.yandexmapapplication.R
 import ru.kozlovss.yandexmapapplication.databinding.FragmentPlacesBinding
 import ru.kozlovss.yandexmapapplication.dto.Place
 import ru.kozlovss.yandexmapapplication.ui.OnInteractionListener
 import ru.kozlovss.yandexmapapplication.adapter.PlacesAdapter
+import ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment.Companion.LAT_KEY
+import ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment.Companion.LONG_KEY
 
 class PlacesFragment : Fragment() {
 
@@ -31,7 +36,13 @@ class PlacesFragment : Fragment() {
             }
 
             override fun onToPlace(place: Place) {
-                // TODO: переход на экран с меткой
+                findNavController().navigate(
+                    R.id.action_navigation_places_to_navigation_maps,
+                    bundleOf(
+                        LAT_KEY to place.latitude,
+                        LONG_KEY to place.longitude
+                    )
+                )
             }
         })
 
