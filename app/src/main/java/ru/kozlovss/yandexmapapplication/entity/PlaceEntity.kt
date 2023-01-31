@@ -1,17 +1,16 @@
 package ru.kozlovss.yandexmapapplication.entity
 
-import androidx.lifecycle.LiveData
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import ru.kozlovss.yandexmapapplication.dto.Place
 
 @Entity
 data class PlaceEntity(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
-    val latitude: Float,
-    val longitude: Float
+    val latitude: Double,
+    val longitude: Double
 ) {
     companion object {
         fun fromDto(place: Place) = with(place) {

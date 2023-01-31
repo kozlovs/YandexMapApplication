@@ -22,6 +22,7 @@ import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
 import com.yandex.runtime.ui_view.ViewProvider
 import android.Manifest
+import android.util.Log
 import kotlinx.coroutines.flow.collectLatest
 import ru.kozlovss.yandexmapapplication.R
 import ru.kozlovss.yandexmapapplication.databinding.FragmentMapsBinding
@@ -124,10 +125,11 @@ class MapsFragment : Fragment() {
                 viewModel.places.collectLatest { places ->
                     collection.clear()
                     places.forEach { place ->
+                        Log.d("MyLog", place.toString())
                         val placeBinding = MarkerPlaceBinding.inflate(layoutInflater)
                         placeBinding.title.text = place.name
                         collection.addPlacemark(
-                            Point(place.latitude.toDouble(), place.longitude.toDouble()),
+                            Point(place.latitude, place.longitude),
                             ViewProvider(placeBinding.root)
                         ).apply {
                             userData = place.id

@@ -3,6 +3,7 @@ package ru.kozlovss.yandexmapapplication.ui
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.os.bundleOf
@@ -38,8 +39,8 @@ class NewPlaceFragment : DialogFragment() {
                 viewModel.insert(
                     Place(
                         id = requireArguments().getSerializable(ID_KEY) as? Long ?: 0,
-                        latitude = requireArguments().getFloat(LAT_KEY),
-                        longitude = requireArguments().getFloat(LONG_KEY),
+                        latitude = requireArguments().getDouble(LAT_KEY),
+                        longitude = requireArguments().getDouble(LONG_KEY),
                         name = text,
                     )
                 )
