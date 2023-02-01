@@ -1,4 +1,4 @@
-package ru.kozlovss.yandexmapapplication.ui.places
+package ru.kozlovss.yandexmapapplication.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

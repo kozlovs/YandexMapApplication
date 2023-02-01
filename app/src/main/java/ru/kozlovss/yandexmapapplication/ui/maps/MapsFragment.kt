@@ -27,7 +27,7 @@ import ru.kozlovss.yandexmapapplication.R
 import ru.kozlovss.yandexmapapplication.databinding.FragmentMapsBinding
 import ru.kozlovss.yandexmapapplication.databinding.MarkerPlaceBinding
 import ru.kozlovss.yandexmapapplication.ui.NewPlaceFragment
-import ru.kozlovss.yandexmapapplication.ui.places.PlacesViewModel
+import ru.kozlovss.yandexmapapplication.viewmodel.PlacesViewModel
 
 class MapsFragment : Fragment() {
 
@@ -58,8 +58,9 @@ class MapsFragment : Fragment() {
         }
     }
 
-    private val placeTapListener = MapObjectTapListener { mapObject, _ ->
-        viewModel.removeById(mapObject.userData as Long)
+    private val placeTapListener = MapObjectTapListener { mapObject, point ->
+        NewPlaceFragment.newInstance(point.latitude, point.longitude, mapObject.userData as Long)
+            .show(childFragmentManager, null)
         true
     }
 

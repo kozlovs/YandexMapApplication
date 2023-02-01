@@ -16,6 +16,7 @@ import ru.kozlovss.yandexmapapplication.ui.OnInteractionListener
 import ru.kozlovss.yandexmapapplication.adapter.PlacesAdapter
 import ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment.Companion.LAT_KEY
 import ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment.Companion.LONG_KEY
+import ru.kozlovss.yandexmapapplication.viewmodel.PlacesViewModel
 
 class PlacesFragment : Fragment() {
 
