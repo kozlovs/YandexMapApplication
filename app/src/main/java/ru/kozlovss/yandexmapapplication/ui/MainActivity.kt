@@ -10,7 +10,6 @@ import ru.kozlovss.yandexmapapplication.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,14 +23,6 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         val navController = navHostFragment.navController
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_maps, R.id.navigation_places
-            )
-        )
-
         navView.setupWithNavController(navController)
     }
-
-
 }
