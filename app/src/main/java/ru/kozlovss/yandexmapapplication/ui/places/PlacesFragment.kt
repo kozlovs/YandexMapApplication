@@ -1,6 +1,7 @@
 package ru.kozlovss.yandexmapapplication.ui.places
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,20 +15,23 @@ import ru.kozlovss.yandexmapapplication.databinding.FragmentPlacesBinding
 import ru.kozlovss.yandexmapapplication.dto.Place
 import ru.kozlovss.yandexmapapplication.ui.OnInteractionListener
 import ru.kozlovss.yandexmapapplication.adapter.PlacesAdapter
-import ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment.Companion.LAT_KEY
-import ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment.Companion.LONG_KEY
+import ru.kozlovss.yandexmapapplication.ui.MainActivity
+import ru.kozlovss.yandexmapapplication.ui.maps.MapsFragment
 import ru.kozlovss.yandexmapapplication.viewmodel.PlacesViewModel
 
 class PlacesFragment : Fragment() {
 
-    private val viewModel by viewModels<PlacesViewModel>()
+    private val viewModel: PlacesViewModel by viewModels(
+        ownerProducer = ::requireParentFragment
+    )
     private var _binding: FragmentPlacesBinding? = null
     private val binding get() = _binding!!
     private var _adapter: PlacesAdapter? = null
     private val adapter get() = _adapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPlacesBinding.inflate(inflater, container, false)
@@ -37,13 +41,8 @@ class PlacesFragment : Fragment() {
             }
 
             override fun onToPlace(place: Place) {
-                findNavController().navigate(
-                    R.id.action_navigation_places_to_navigation_maps,
-                    bundleOf(
-                        LAT_KEY to place.latitude,
-                        LONG_KEY to place.longitude
-                    )
-                )
+                Log.d("MyLog", "onToPlace: $place")
+                viewModel.setPlace(place)
             }
         })
 
@@ -58,6 +57,16 @@ class PlacesFragment : Fragment() {
         lifecycleScope.launchWhenCreated {
             viewModel.places.collect {
                 adapter?.submitList(it)
+            }
+        }
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.place.observe(viewLifecycleOwner) {
+                Log.d("MyLog", "collect: $it")
+                if (it.id != 0L) {
+                    val rootActivity = activity as MainActivity
+                    rootActivity.onToMap()
+                }
             }
         }
     }
