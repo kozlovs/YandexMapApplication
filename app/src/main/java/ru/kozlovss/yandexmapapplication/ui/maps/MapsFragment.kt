@@ -22,7 +22,6 @@ import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
 import com.yandex.runtime.ui_view.ViewProvider
 import android.Manifest
-import android.util.Log
 import kotlinx.coroutines.flow.collectLatest
 import ru.kozlovss.yandexmapapplication.R
 import ru.kozlovss.yandexmapapplication.databinding.FragmentMapsBinding
@@ -140,12 +139,9 @@ class MapsFragment : Fragment() {
             collection.addTapListener(placeTapListener)
 
             // Переход к точке на карте после клика на списке
-            Log.d("MyLog", "viewModel.place.value: ${viewModel.place.value}")
-            val targetPlace = viewModel.place.value!!
-            Log.d("MyLog", "targetPlace: $targetPlace")
-            if (targetPlace.id != 0L) {
+            val targetPlace = viewModel.place.value
+            targetPlace?.let {
                 val cameraPosition = map.cameraPosition
-
                 map.move(
                     CameraPosition(
                         Point(targetPlace.latitude, targetPlace.longitude),
@@ -155,10 +151,8 @@ class MapsFragment : Fragment() {
                     )
                 )
                 viewModel.clearPlace()
-            } else {
-                // При входе в приложение показываем текущее местоположение
-                userLocation.setObjectListener(locationObjectListener)
-            }
+            } ?: userLocation.setObjectListener(locationObjectListener)  // При входе в приложение показываем текущее местоположение
+
         }
 
         binding.plus.setOnClickListener {
@@ -204,10 +198,5 @@ class MapsFragment : Fragment() {
         mapView?.onStop()
         MapKitFactory.getInstance().onStop()
         super.onStop()
-    }
-
-    companion object {
-        const val LAT_KEY = "LAT_KEY"
-        const val LONG_KEY = "LONG_KEY"
     }
 }
