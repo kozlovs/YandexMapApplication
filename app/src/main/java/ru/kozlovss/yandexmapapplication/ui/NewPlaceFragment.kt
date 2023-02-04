@@ -1,6 +1,5 @@
 package ru.kozlovss.yandexmapapplication.ui
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +7,7 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.kozlovss.yandexmapapplication.R
 import ru.kozlovss.yandexmapapplication.dto.Place
 import ru.kozlovss.yandexmapapplication.viewmodel.PlacesViewModel
@@ -27,7 +27,7 @@ class NewPlaceFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val viewModel by viewModels<PlacesViewModel>()
         val view = AppCompatEditText(requireContext())
-        return AlertDialog.Builder(requireContext())
+        return MaterialAlertDialogBuilder(requireContext())
             .setView(view)
             .setTitle(getString(R.string.enter_name))
             .setPositiveButton(android.R.string.ok) { _, _ ->
@@ -37,7 +37,7 @@ class NewPlaceFragment : DialogFragment() {
                 }
                 viewModel.insert(
                     Place(
-                        id = requireArguments().getSerializable(ID_KEY) as? Long ?: 0,
+                        id = requireArguments().getLong(ID_KEY),
                         latitude = requireArguments().getDouble(LAT_KEY),
                         longitude = requireArguments().getDouble(LONG_KEY),
                         name = text,
