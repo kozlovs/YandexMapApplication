@@ -3,12 +3,12 @@ package ru.kozlovss.yandexmapapplication.ui
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import ru.kozlovss.yandexmapapplication.R
+import ru.kozlovss.yandexmapapplication.databinding.FragmentNewPlaceBinding
 import ru.kozlovss.yandexmapapplication.dto.Place
 import ru.kozlovss.yandexmapapplication.viewmodel.PlacesViewModel
 
@@ -26,12 +26,12 @@ class NewPlaceFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val viewModel by viewModels<PlacesViewModel>()
-        val view = AppCompatEditText(requireContext())
+        val view = FragmentNewPlaceBinding.inflate(layoutInflater).inputView
         return MaterialAlertDialogBuilder(requireContext())
             .setView(view)
             .setTitle(getString(R.string.enter_name))
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val text = view.text?.toString()?.takeIf { it.isNotBlank() } ?: run {
+                val text = view.editText?.text?.toString()?.takeIf { it.isNotBlank() } ?: run {
                     Toast.makeText(requireContext(), "Name is empty", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }

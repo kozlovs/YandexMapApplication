@@ -1,13 +1,12 @@
 <resources>
-    <string name="app_name">YandexMapApplication</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="maps">Maps</string>
+    <string name="app_name" translatable="false">MapApplication</string>
+    <string name="maps">Map</string>
     <string name="places">Places</string>
-    <string name="enter_name">enter name</string>
-    <string name="need_permission">need permission</string>
+    <string name="enter_name">Enter name</string>
+    <string name="need_permission">Need permission</string>
     <string name="place_icon_description">place icon</string>
     <string name="plus_button_description">plus button description</string>
     <string name="minus_button_description">minus button description</string>
     <string name="location_button_description">location button description</string>
+    <string name="place_name">place name</string>
 </resources>

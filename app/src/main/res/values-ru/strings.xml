@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="maps">Карта</string>
+    <string name="places">Места</string>
+    <string name="enter_name">Введите наименование</string>
+    <string name="need_permission">Необходимо разрешение</string>
+    <string name="place_icon_description">иконка места</string>
+    <string name="plus_button_description">кнопка увеличения</string>
+    <string name="minus_button_description">кнопка уменьшения</string>
+    <string name="location_button_description">кнопка местоположения</string>
+    <string name="place_name">название места</string>
+</resources>
